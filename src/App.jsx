@@ -43,7 +43,10 @@ function App() {
   return (
     <>
       <div className='relative'>
-          <h1 className='text-black text-lg py-4 font-main text-center'>pariscoolnoldstuff</h1>
+        <div className='flex justify-between px-1 pt-4'>
+          <h1 className='text-black text-[8px] font-main italic'>pariscoolnoldstuff</h1>
+          {active && <p className='text-black text-[8px] text-right font-main italic' onClick={closeModal}>&lt;-</p>}
+        </div>
           <div className={active ? 'columns-2 opacity-5' : 'columns-2'}>
               {img.map((image, index) => {
                 const uri = image.split('assets/').pop();

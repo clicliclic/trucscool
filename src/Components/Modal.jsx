@@ -36,8 +36,7 @@ const Modal = (props) => {
     }
     return (
       <>
-        <div className='h-screen w-screen absolute top-0' onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-            <p className='text-black text-lg py-4 pl-6 font-main' onClick={props.closeModal}>&lt;-</p>
+        <div className='h-screen w-screen absolute top-[28px]' onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
             <img src={props.photos[currentPhotoIndex]} alt="" />
         </div>
       </>

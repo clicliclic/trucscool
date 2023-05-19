@@ -1,7 +1,0 @@
-.image_ctn p {
-    opacity: 0;
-}
-
-.image_ctn:hover p {
-    opacity: 1;
-}

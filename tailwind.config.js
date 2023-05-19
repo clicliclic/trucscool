@@ -5,8 +5,7 @@ export default {
   ],
   theme: {
     fontFamily: {
-      main: ['Caveat', 'cursive'],
-      secondary: ['Amatic SC', 'cursive']
+      main: ['Courier Prime', 'monospace']
     },
     extend: {},
   },
