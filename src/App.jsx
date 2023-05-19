@@ -29,7 +29,10 @@ function App() {
   const openModal = (index) => {
     setActive(true);
     setImageIndex(index)
-    console.log(index);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   };
 
   const closeModal = () => {
