@@ -26,27 +26,31 @@ function App() {
   const [imageIndex, setImageIndex] = useState(0);
 
 
-  const handleClick = (e) => {
-    setActive(prevActive => !prevActive);
-    setImageIndex(e.target.id)
-    console.log(typeof imageIndex);
+  const openModal = (index) => {
+    setActive(true);
+    setImageIndex(index)
+    console.log(index);
+  };
+
+  const closeModal = () => {
+    setActive(false);
+    setImageIndex(null)
   };
 
   return (
     <>
       <div className='relative'>
           <h1 className='text-black text-lg py-4 font-main text-center'>pariscoolnoldstuff</h1>
-          <div className='columns-2'>
+          <div className={active ? 'columns-2 opacity-5' : 'columns-2'}>
               {img.map((image, index) => {
                 const uri = image.split('assets/').pop();
                 const startIndex = uri.lastIndexOf('-');
                 const endIndex = uri.lastIndexOf('.');
                 const imageName = uri.split(uri.substring(startIndex, endIndex + 1)).join('.');
-                if(!active)
-                  return <Image key={index} index={index} src={image} name={imageName} handleClick={handleClick} />
+                return <Image key={index} index={index} src={image} name={imageName} openModal={openModal} />
               })}
           </div>
-          {active && <Modal handleClick={handleClick} src={img[imageIndex]} alt={imageIndex} />}
+          <Modal isOpen={active} closeModal={closeModal} photos={img} imageIndex={imageIndex} />
       </div>
     </>
   )
