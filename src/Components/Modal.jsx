@@ -1,17 +1,10 @@
-import { useState, useEffect } from 'react'
+import React from "react";
+import { useState } from 'react';
 
 const Modal = (props) => {
-
-    const [currentPhotoIndex, setCurrentPhotoIndex] = useState(null);
-
-    useEffect(() => {
-      setCurrentPhotoIndex(props.imageIndex);
-    }, [props.imageIndex]);
-
     const [touchStart, setTouchStart] = useState(null)
     const [touchEnd, setTouchEnd] = useState(null)
-
-    const minSwipeDistance = 50 
+    const minSwipeDistance = 50;
 
     const onTouchStart = (e) => {
       setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
@@ -25,21 +18,22 @@ const Modal = (props) => {
       const distance = touchStart - touchEnd
       const isLeftSwipe = distance > minSwipeDistance
       const isRightSwipe = distance < -minSwipeDistance
-      if (isLeftSwipe && currentPhotoIndex < props.photos.length - 1)
-        setCurrentPhotoIndex(currentPhotoIndex + 1);
-      else if (isRightSwipe && currentPhotoIndex > 0)
-        setCurrentPhotoIndex(currentPhotoIndex - 1);
+      if (isLeftSwipe && props.imageIndex < props.photos.length - 1) 
+        props.changePhoto('left');
+      else if (isRightSwipe && props.imageIndex > 0)
+        props.changePhoto('right');
     }
 
     if(!props.isOpen) {
       return null;
     }
+
     return (
-      <>
-        <div className='h-screen w-screen absolute top-[28px]' onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-            <img src={props.photos[currentPhotoIndex]} alt="" />
-        </div>
-      </>
+        <>
+            <div className='h-screen w-screen absolute top-[28px]' onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                <img src={props.photos[props.imageIndex].default} alt="" />
+            </div>
+        </>
     )
   }
   
