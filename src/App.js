@@ -5,6 +5,7 @@ import Image from './Components/Image.jsx'
 import Modal from './Components/Modal.jsx'
 
 const App = () => {
+  console.log('Coucou petit coquinou');
   const [active, setActive] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -13,7 +14,6 @@ const App = () => {
   }
 
   const images = importAll(require.context('./images', false, /\.(png|jpe?g|gif|svg)$/));
-
 
   const openModal = (index) => {
     setImageIndex(index);
